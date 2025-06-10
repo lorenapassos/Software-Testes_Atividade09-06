@@ -58,20 +58,6 @@ Todos os testes devem retornar **✅ Passou**, indicando funcionamento correto d
 
 ---
 
-## 📁 Estrutura do Projeto
-
-├── index.html
-├── css/
-│ └── styles.css
-├── js/
-│ └── app.js
-├── src/
-│ └── rodarTestes.js
-└── tests/
-├── unit.test.js
-└── component.test.js
-
-
 ## Conclusão
 
 A atividade permitiu a consolidação de conhecimentos relacionados à construção de interfaces dinâmicas, lógica condicional e práticas básicas de testes em JavaScript. O projeto foi estruturado de forma simples, porém funcional, com foco na clareza do código e na eficácia dos testes.
