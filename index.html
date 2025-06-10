@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador Star Wars</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<div class="container">
+  <h1 class="title star-wars-title">
+    🌌 Qual personagem de <span class="highlight">Star Wars</span> você é? 
+  </h1>
+
+    <form id="quiz-form">
+      <label>Qual é o seu nome?</label>
+      <input type="text" id="nomeUsuario" placeholder="Digite seu nome" required />
+
+      <label>Escolha uma habilidade:</label>
+      <select id="habilidade" required>
+        <option value="">-- Selecione --</option>
+        <option value="sabedoria">Sabedoria</option>
+        <option value="coragem">Coragem</option>
+        <option value="liderança">Liderança</option>
+        <option value="força">Força física</option>
+      </select>
+
+      <label>Escolha uma arma:</label>
+      <select id="arma" required>
+        <option value="">-- Selecione --</option>
+        <option value="sabreluz">Sabre de Luz</option>
+        <option value="blaster">Blaster</option>
+        <option value="mente">Poder da mente</option>
+        <option value="estrategia">Estratégia</option>
+      </select>
+
+      <label>Escolha seu planeta favorito:</label>
+      <select id="planeta" required>
+        <option value="">-- Selecione --</option>
+        <option value="tatooine">Tatooine</option>
+        <option value="coruscant">Coruscant</option>
+        <option value="dagobah">Dagobah</option>
+        <option value="endor">Endor</option>
+      </select>
+
+      <label>Qual lado da Força você prefere?</label>
+      <select id="lado" required>
+        <option value="">-- Selecione --</option>
+        <option value="jedi">Lado da Luz</option>
+        <option value="sith">Lado Sombrio</option>
+        <option value="neutro">Neutro</option>
+      </select>
+
+      <button type="submit">Descobrir personagem</button>
+    </form>
+
+    <div id="resultado" class="resultado">
+      <p>Sua resposta aparecerá aqui...</p>
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

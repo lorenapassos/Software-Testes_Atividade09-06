@@ -1,0 +1,85 @@
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #000;
+  color: #FFE81F;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 2rem;
+  background-color: #111;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #FFE81F;
+}
+
+.star-wars-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  font-family: 'Arial Black', Gadget, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #FFE81F;
+  text-shadow: 0 0 10px #FFE81F, 0 0 20px #000;
+}
+.star-wars-title .highlight {
+  color: #FFCC00;
+  text-shadow: 0 0 15px #FFD700;
+}
+
+form label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+form select,
+form button {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 5px;
+}
+
+form select {
+  background-color: #333;
+  color: #FFE81F;
+}
+
+form button {
+  background-color: #FFE81F;
+  color: #000;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button:hover {
+  background-color: #FFD700;
+}
+
+.resultado {
+  margin-top: 2rem;
+  background-color: #222;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.oculto {
+  display: none;
+}
+input[type="text"] {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #333;
+  color: #FFE81F;
+}
