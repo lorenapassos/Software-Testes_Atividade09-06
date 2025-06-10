@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testes - Simulador Star Wars</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">🔍 Testes da Aplicação</h1>
+
+    <form id="quiz-form">
+      <input type="text" id="nome" placeholder="Digite seu nome" required />
+
+      <label>Escolha uma habilidade:</label>
+      <select id="habilidade" required>
+        <option value="">-- Selecione --</option>
+        <option value="sabedoria">Sabedoria</option>
+        <option value="coragem">Coragem</option>
+        <option value="liderança">Liderança</option>
+        <option value="força">Força física</option>
+      </select>
+
+      <label>Escolha uma arma:</label>
+      <select id="arma" required>
+        <option value="">-- Selecione --</option>
+        <option value="sabreluz">Sabre de Luz</option>
+        <option value="blaster">Blaster</option>
+        <option value="mente">Poder da mente</option>
+        <option value="estrategia">Estratégia</option>
+      </select>
+
+      <label>Escolha um lado:</label>
+      <select id="lado" required>
+        <option value="">-- Selecione --</option>
+        <option value="jedi">Jedi</option>
+        <option value="sith">Sith</option>
+        <option value="neutro">Neutro</option>
+      </select>
+
+      <label>Escolha uma nave:</label>
+      <select id="nave" required>
+        <option value="">-- Selecione --</option>
+        <option value="xwing">X-Wing</option>
+        <option value="tie">TIE Fighter</option>
+        <option value="falcon">Millennium Falcon</option>
+      </select>
+
+      <button type="submit">Descobrir personagem</button>
+    </form>
+
+    <div id="resultado" class="resultado"></div>
+
+    <hr />
+    <h2>Testes</h2>
+    <button id="rodarTestesUnitBtn">Rodar Testes Unitários</button>
+    <button id="rodarTestesComponentBtn">Rodar Testes de Componentes</button>
+    <div id="testes-resultados"></div>
+  </div>
+
+  <script src="js/app.js"></script>
+  <script src="src/rodarTestes.js"></script>
+  <script src="tests/unit.test.js"></script>
+  <script src="tests/component.test.js"></script>
+</body>
+</html>
