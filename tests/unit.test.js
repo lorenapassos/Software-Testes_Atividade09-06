@@ -1,70 +1,86 @@
-function calcularPersonagem(habilidade, arma, forca, estrategia) {
-  if (!habilidade && !arma && !forca && !estrategia) {
-    throw new Error("Parâmetros inválidos");
-  }
+function executarTestesUnitarios() {
+  let passed = 0;
+  let failed = 0;
 
-  if (habilidade === "sabedoria" && arma === "sabreluz") {
-    return "Yoda";
-  }
-
-  if (habilidade === "coragem" && arma === "blaster") {
-    return "Han Solo";
-  }
-
-  if (forca === "força" && estrategia === "liderança") {
-    return "Leia Organa";
-  }
-
-  if (habilidade === "liderança" && arma === "sabreluz") {
-    return "Luke Skywalker";
-  }
-
-  return "Personagem desconhecido";
-}
-
-function testar(descricao, fn) {
-  try {
-    fn();
-    console.log(`✅ ${descricao}`);
-  } catch (error) {
-    console.error(`❌ ${descricao}`);
-    console.error("  " + error.message);
-  }
-}
-
-function rodarTestesUnitarios() {
-  testar("Retorna Yoda com sabedoria e sabre de luz", () => {
-    const resultado = calcularPersonagem("sabedoria", "sabreluz");
-    if (resultado !== "Yoda") throw new Error(`Esperado Yoda, mas recebeu ${resultado}`);
-  });
-
-  testar("Retorna Han Solo com coragem e blaster", () => {
-    const resultado = calcularPersonagem("coragem", "blaster");
-    if (resultado !== "Han Solo") throw new Error(`Esperado Han Solo, mas recebeu ${resultado}`);
-  });
-
-  testar("Retorna Leia Organa com força e estratégia", () => {
-    const resultado = calcularPersonagem(null, null, "força", "liderança");
-    if (resultado !== "Leia Organa") throw new Error(`Esperado Leia Organa, mas recebeu ${resultado}`);
-  });
-
-  testar("Retorna Luke Skywalker com liderança e sabre de luz", () => {
-    const resultado = calcularPersonagem("liderança", "sabreluz");
-    if (resultado !== "Luke Skywalker") throw new Error(`Esperado Luke Skywalker, mas recebeu ${resultado}`);
-  });
-
-  testar("Erro para parâmetros inválidos (todos vazios)", () => {
-    let erroLançado = false;
+  function testar(nome, fn) {
     try {
-      calcularPersonagem(null, null, null, null);
-    } catch (e) {
-      erroLançado = true;
+      fn();
+      exibirResultado(nome, "✅ Passou");
+      passed++;
+    } catch (erro) {
+      exibirResultado(nome, "❌ Falhou: " + erro.message);
+      failed++;
     }
-    if (!erroLançado) throw new Error("Esperava erro para parâmetros inválidos");
+  }
+
+  function descobrirPersonagem(lado, arma, planeta, habilidade, nome) {
+    let personagem = "um ser misterioso da galáxia...";
+
+    if (habilidade === "sabedoria" && arma === "sabreluz" && lado === "jedi") {
+      personagem = "Yoda";
+    } else if (habilidade === "liderança" && arma === "sabreluz" && lado === "jedi") {
+      personagem = "Luke Skywalker";
+    } else if (habilidade === "força" && arma === "sabreluz" && lado === "sith") {
+      personagem = "Darth Vader";
+    } else if (habilidade === "estrategia" && arma === "blaster" && planeta === "coruscant") {
+      personagem = "Leia Organa";
+    } else if (habilidade === "coragem" && arma === "blaster" && lado === "neutro") {
+      personagem = "Han Solo";
+    } else if (habilidade === "sabedoria" && planeta === "dagobah") {
+      personagem = "Obi-Wan Kenobi";
+    } else if (habilidade === "força" && lado === "sith") {
+      personagem = "Palpatine";
+    } else {
+      personagem = "Grogu (Baby Yoda)";
+    }
+
+    const saudacao = nome ? `Olá, ${nome}! ` : "";
+    return `${saudacao}Você se parece com ${personagem}!`;
+  }
+
+  // Testes que devem passar
+  testar("Retorna Yoda com sabedoria, sabreluz e Jedi", () => {
+    const res = descobrirPersonagem("jedi", "sabreluz", "tatooine", "sabedoria", "Ahsoka");
+    if (!res.includes("Yoda")) throw new Error(`Esperado Yoda, mas retornou: ${res}`);
   });
 
-  testar("Retorna personagem desconhecido para combinação não mapeada", () => {
-    const resultado = calcularPersonagem("sabedoria", "blaster");
-    if (resultado !== "Personagem desconhecido") throw new Error(`Esperado Personagem desconhecido, mas recebeu ${resultado}`);
+  testar("Retorna Luke Skywalker com liderança, sabreluz e Jedi", () => {
+    const res = descobrirPersonagem("jedi", "sabreluz", "tatooine", "liderança", "Luke");
+    if (!res.includes("Luke Skywalker")) throw new Error(`Esperado Luke Skywalker, mas retornou: ${res}`);
+  });
+
+  testar("Retorna Darth Vader com força, sabreluz e Sith", () => {
+    const res = descobrirPersonagem("sith", "sabreluz", "mustafar", "força", "Anakin");
+    if (!res.includes("Darth Vader")) throw new Error(`Esperado Darth Vader, mas retornou: ${res}`);
+  });
+
+  testar("Retorna Leia Organa com estratégia, blaster e Coruscant", () => {
+    const res = descobrirPersonagem("jedi", "blaster", "coruscant", "estrategia", "Leia");
+    if (!res.includes("Leia Organa")) throw new Error(`Esperado Leia Organa, mas retornou: ${res}`);
+  });
+
+  testar("Retorna Han Solo com coragem, blaster e Neutro", () => {
+    const res = descobrirPersonagem("neutro", "blaster", "falcon", "coragem", "Han");
+    if (!res.includes("Han Solo")) throw new Error(`Esperado Han Solo, mas retornou: ${res}`);
+  });
+
+  testar("Retorna Obi-Wan Kenobi com sabedoria e Dagobah", () => {
+    const res = descobrirPersonagem("neutro", "mente", "dagobah", "sabedoria", "Ben");
+    if (!res.includes("Obi-Wan Kenobi")) throw new Error(`Esperado Obi-Wan Kenobi, mas retornou: ${res}`);
+  });
+
+  testar("Retorna Palpatine com força e Sith", () => {
+    const res = descobrirPersonagem("sith", "mente", "coruscant", "força", "Sheev");
+    if (!res.includes("Palpatine")) throw new Error(`Esperado Palpatine, mas retornou: ${res}`);
+  });
+
+  testar("Retorna Grogu para combinação desconhecida", () => {
+    const res = descobrirPersonagem("neutro", "mente", "alderaan", "inteligência", "Grogu");
+    if (!res.includes("Grogu")) throw new Error(`Esperado Grogu, mas retornou: ${res}`);
+  });
+
+  testar("Inclui saudação personalizada", () => {
+    const res = descobrirPersonagem("jedi", "sabreluz", "tatooine", "sabedoria", "Ahsoka");
+    if (!res.startsWith("Olá, Ahsoka!")) throw new Error("Saudação não encontrada");
   });
 }
